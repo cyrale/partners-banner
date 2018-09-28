@@ -26,16 +26,16 @@ Display a stripe of partners.
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/cyrale/partner-banner"
+      "url": "https://github.com/cyrale/partners-banner"
     }
   ]
 }
 ```
 
 1. Add above repository to `composer.json`.
-2. Run `composer require cyrale/partner-banner`.
+2. Run `composer require cyrale/partners-banner`.
 3. Activate Gutenberg Basics through the 'Plugins' menu in WordPress.
 
 ## Changelog ##
 
-[See details](https://github.com/cyrale/partner-banner/blob/master/CHANGELOG.md)
+[See details](https://github.com/cyrale/partners-banner/blob/master/CHANGELOG.md)

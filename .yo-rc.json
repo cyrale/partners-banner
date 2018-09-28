@@ -1,14 +1,14 @@
 {
   "generator-plugin-wp": {
     "name": "Partner Banner",
-    "homepage": "https://github.com/cyrale/partner-banner",
+    "homepage": "https://github.com/cyrale/partners-banner",
     "description": "Display a banner of your partners.",
     "version": "1.0.0",
     "author": "Cyril Jacquesson",
     "authoremail": "cyril@jacquesson.me",
     "authorurl": "https://github.com/cyrale",
     "license": "GPLv2",
-    "slug": "partner-banner",
+    "slug": "partners-banner",
     "classname": "Partners_Banner",
     "mainclassname": "Partners_Banner",
     "classprefix": "PB_",
