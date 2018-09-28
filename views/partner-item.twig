@@ -1,0 +1,9 @@
+{% if partner.website %}
+    <a href="{{ partner.website }}" class="partner__item" rel="noreferrer noopener">
+        {% include 'partner-image.twig' with { partner: partner } %}
+    </a>
+{% else %}
+    <span href="{{ partner.website }}" class="partner__item">
+        {% include 'partner-image.twig' with { partner: partner } %}
+    </span>
+{% endif %}

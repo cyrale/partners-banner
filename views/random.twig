@@ -1,0 +1,9 @@
+<div class="partners-banner" data-layout="{{ layout }}" data-options="{{ options|json_encode() }}">
+    <div class="partners-banner__random">
+        {% for partner in partners %}
+            <div class="partner">
+                {% include 'partner-item.twig' with { partner: partner } %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

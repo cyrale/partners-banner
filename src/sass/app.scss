@@ -1,0 +1,42 @@
+.partners-banner {
+	&[data-layout="carousel"] {
+		.partner {
+			&__item {
+				display: block;
+				margin: 0 6px;
+			}
+
+			&__image {
+				margin: 0 auto;
+			}
+		}
+	}
+
+	&[data-layout="random"] {
+		.partners-banner__row {
+			display: flex;
+		}
+
+		.partner {
+			$this: '.partner';
+
+			&__item {
+				display: inline-block;
+				opacity: 1;
+				transform: scale(1);
+				transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+			}
+
+			&__item:nth-child(2) {
+				display: none;
+			}
+
+			&--hide {
+				#{$this}__item {
+					opacity: 0;
+					transform: scale(.6);
+				}
+			}
+		}
+	}
+}

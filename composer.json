@@ -1,0 +1,16 @@
+{
+    "name": "cyrale/partners-banner",
+    "description": "Display a banner of your partners.",
+    "type": "wordpress-plugin",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Cyrale",
+            "email": "cyril@jacquesson.me"
+        }
+    ],
+    "require": {
+        "jcchavezs/cmb2-conditionals": "dev-master",
+        "twig/twig": "^2.5"
+    }
+}

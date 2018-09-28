@@ -1,0 +1,67 @@
+{
+  "name": "partners-banner",
+  "title": "Partners Banner",
+  "version": "1.0.0",
+  "description": "Display a banner of your partners.",
+  "homepage": "https://github.com/cyrale/partners-banner#readme",
+  "repository": "https://github.com/cyrale/partners-banner",
+  "bugs": {
+    "url": "https://github.com/cyrale/partners-banner/issue"
+  },
+  "author": {
+    "name": "Cyrale",
+    "email": "cyril@jacquesson.me"
+  },
+  "license": "GPL-2.0+",
+  "scripts": {
+    "precommit": "npx lint-staged && npm run build",
+    "build": "npx webpack --mode production",
+    "dev": "npx webpack --watch --progress --mode development"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "includes/**/*.php": [
+      "vendor/bin/phpcbf",
+      "vendor/bin/phpcs",
+      "git add"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^8.6.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.2",
+    "classnames": "^2.2.6",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "css-mqpacker": "^6.0.2",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.19.1",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jest": "^21.22.1",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-wordpress": "^0.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "husky": "^1.0.0-rc.15",
+    "lint-staged": "^7.3.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
