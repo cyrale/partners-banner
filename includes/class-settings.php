@@ -188,49 +188,49 @@ class PB_Settings {
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['simple-list'] . '<br />' . __( 'Number of partners to display', 'partners-banner' ),
+			'name'             => __( 'Number of partners to display', 'partners-banner' ),
 			'description'      => __( 'Leave empty to have no limit.', 'partners-banner' ),
 			'id'               => 'simple_list_limit',
 			'type'             => 'text_small',
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Number of partners per slide', 'partners-banner' ),
+			'name'             => __( 'Number of partners per slide', 'partners-banner' ),
 			'id'               => 'carousel_slides_to_show',
 			'type'             => 'text_small',
 			'default'          => 5,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Number of partners per slide (tablet)', 'partners-banner' ),
+			'name'             => __( 'Number of partners per slide (tablet)', 'partners-banner' ),
 			'id'               => 'carousel_slides_to_show_tablet',
 			'type'             => 'text_small',
 			'default'          => 3,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Number of partners per slide (mobile)', 'partners-banner' ),
+			'name'             => __( 'Number of partners per slide (mobile)', 'partners-banner' ),
 			'id'               => 'carousel_slides_to_show_mobile',
 			'type'             => 'text_small',
 			'default'          => 2,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Animation speed', 'partners-banner' ),
+			'name'             => __( 'Animation speed', 'partners-banner' ),
 			'id'               => 'carousel_speed',
 			'type'             => 'text_small',
 			'default'          => 300,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Autoplay speed', 'partners-banner' ),
+			'name'             => __( 'Autoplay speed', 'partners-banner' ),
 			'id'               => 'carousel_autoplay_speed',
 			'type'             => 'text_small',
 			'default'          => 3000,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['random'] . '<br />' . __( 'Layout', 'partners-banner' ),
+			'name'             => __( 'Layout', 'partners-banner' ),
 			'description'      => __( 'Indicate the number of items by row. Separate each row by comma.', 'partners-banner' ),
 			'id'               => 'random_layout',
 			'type'             => 'text_medium',
@@ -238,14 +238,14 @@ class PB_Settings {
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['random'] . '<br />' . __( 'Animation speed', 'partners-banner' ),
+			'name'             => __( 'Animation speed', 'partners-banner' ),
 			'id'               => 'random_speed',
 			'type'             => 'text_small',
 			'default'          => 300,
 		] );
 
 		$cmb->add_field( [
-			'name'             => $layout_labels['random'] . '<br />' . __( 'Autoplay speed', 'partners-banner' ),
+			'name'             => __( 'Autoplay speed', 'partners-banner' ),
 			'id'               => 'random_autoplay_speed',
 			'type'             => 'text_small',
 			'default'          => 3000,

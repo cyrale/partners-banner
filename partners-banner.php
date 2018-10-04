@@ -3,7 +3,7 @@
  * Plugin Name: Partners Banner
  * Plugin URI:  https://github.com/cyrale/partners-banner
  * Description: Display a banner of your partners.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Cyrale
  * Author URI:  https://github.com/cyrale
  * Donate link: https://github.com/cyrale/partners-banner
