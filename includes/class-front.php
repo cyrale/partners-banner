@@ -124,7 +124,8 @@ class PB_Front {
 			'options' => [
 				'simple_list_limit'              => intval( $this->plugin->settings->get_value( 'simple_list_limit', '' ) ),
 				'carousel_slides_to_show'        => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show',5 ) ),
-				'carousel_slides_to_show_mobile' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_mobile', 3 ) ),
+				'carousel_slides_to_show_tablet' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_tablet', 3 ) ),
+				'carousel_slides_to_show_mobile' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_mobile', 2 ) ),
 				'carousel_speed'                 => intval( $this->plugin->settings->get_value( 'carousel_speed', 300 ) ),
 				'carousel_autoplay_speed'        => intval( $this->plugin->settings->get_value( 'carousel_autoplay_speed', 3000 ) ),
 				'random_layout'                  => $this->plugin->settings->get_value( 'random_layout', '4,3' ),
@@ -172,51 +173,6 @@ class PB_Front {
 				];
 			}
 		}
-
-		$partners = array_merge(
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners,
-			$partners
-		);
 
 		$template = $this->twig->load( "{$attr['layout']}.twig" );
 

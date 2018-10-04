@@ -20,6 +20,13 @@ $( () => {
 			slidesToScroll: options.carousel_slides_to_show,
 			responsive: [
 				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: options.carousel_slides_to_show_tablet,
+						slidesToScroll: options.carousel_slides_to_show_tablet,
+					},
+				},
+				{
 					breakpoint: 640,
 					settings: {
 						slidesToShow: options.carousel_slides_to_show_mobile,

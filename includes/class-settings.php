@@ -8,6 +8,7 @@
 
 if ( ! function_exists( 'new_cmb2_box' ) ) {
 	require_once dirname( __FILE__ ) . '/../vendor/cmb2/init.php';
+	require_once dirname( __FILE__ ) . '/../vendor/cmb2-tabs/cmb2-tabs.php';
 }
 
 /**
@@ -86,6 +87,12 @@ class PB_Settings {
 	 * @since  1.0.0
 	 */
 	public function add_options_page_metabox() {
+		$layout_labels = [
+			'simple-list' => esc_html__( 'Simple list', 'partners-banner' ),
+			'carousel'    => esc_html__( 'Carousel', 'partners-banner' ),
+			'random'      => esc_html__( 'Random display', 'partners-banner' ),
+		];
+
 		$cmb = new_cmb2_box( [
 			'id'           => self::$metabox_id,
 			'title'        => $this->title,
@@ -96,23 +103,62 @@ class PB_Settings {
 			 * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
 			 */
 
-			'option_key' => self::$key,
+			'option_key'    => self::$key,
 			// The option key and admin menu page slug.
 			// 'icon_url'        => 'dashicons-palmtree', // Menu icon. Only applicable if 'parent_slug' is left empty.
-			'menu_title'      => esc_html__( 'Settings', 'partners-banner' ), // Falls back to 'title' (above).
-			'parent_slug'     => 'edit.php?post_type=pb-partner', // Make options page a submenu item of the themes menu.
+			'menu_title'    => esc_html__( 'Settings', 'partners-banner' ),
+			// Falls back to 'title' (above).
+			'parent_slug'   => 'edit.php?post_type=pb-partner',
+			// Make options page a submenu item of the themes menu.
 			// 'capability'      => 'manage_options', // Cap required to view options-page.
 			// 'position'        => 1, // Menu position. Only applicable if 'parent_slug' is left empty.
 			// 'admin_menu_hook' => 'network_admin_menu', // 'network_admin_menu' to add network-level options page.
 			// 'display_cb'      => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
 			// 'save_button'     => esc_html__( 'Save Theme Options', 'cmb2' ), // The text for the options-page save button. Defaults to 'Save'.
+			'vertical_tabs' => true, // Set vertical tabs, default false
+			'tabs'          => [
+				[
+					'id'     => 'general',
+					'icon'   => 'dashicons-admin-generic',
+					'title'  => esc_html__( 'General', 'partners-banner' ),
+					'fields' => [
+						'layout',
+						'width',
+						'height',
+					],
+				],
+				[
+					'id'     => 'simple-list',
+					'icon'   => 'dashicons-list-view',
+					'title'  => $layout_labels['simple-list'],
+					'fields' => [
+						'simple_list_limit',
+					],
+				],
+				[
+					'id'     => 'carousel',
+					'icon'   => 'dashicons-images-alt',
+					'title'  => $layout_labels['carousel'],
+					'fields' => [
+						'carousel_slides_to_show',
+						'carousel_slides_to_show_tablet',
+						'carousel_slides_to_show_mobile',
+						'carousel_speed',
+						'carousel_autoplay_speed',
+					],
+				],
+				[
+					'id'     => 'random',
+					'icon'   => 'dashicons-screenoptions',
+					'title'  => $layout_labels['random'],
+					'fields' => [
+						'random_layout',
+						'random_speed',
+						'random_autoplay_speed',
+					],
+				],
+			]
 		] );
-
-		$layout_labels = [
-			'simple-list' => __( 'Simple list', 'partners-banner' ),
-			'carousel'    => __( 'Carousel', 'partners-banner' ),
-			'random'      => __( 'Random display', 'partners-banner' ),
-		];
 
 		$cmb->add_field( [
 			'name'             => __( 'Layout', 'partners-banner' ),
@@ -153,6 +199,13 @@ class PB_Settings {
 			'id'               => 'carousel_slides_to_show',
 			'type'             => 'text_small',
 			'default'          => 5,
+		] );
+
+		$cmb->add_field( [
+			'name'             => $layout_labels['carousel'] . '<br />' . __( 'Number of partners per slide (tablet)', 'partners-banner' ),
+			'id'               => 'carousel_slides_to_show_tablet',
+			'type'             => 'text_small',
+			'default'          => 3,
 		] );
 
 		$cmb->add_field( [
