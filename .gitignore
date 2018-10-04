@@ -1,7 +1,3 @@
-!vendor/cmb2/
-!vendor/cmb2-tabs/
-!vendor/cpt-core/
-
 # Node/npm
 node_modules/
 npm-debug.log
@@ -73,8 +69,10 @@ node_modules
 
 ### Composer ###
 composer.phar
-vendor/
-
+vendor/*
+!vendor/cmb2/
+!vendor/cmb2-tabs/
+!vendor/cpt-core/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
