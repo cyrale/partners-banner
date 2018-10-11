@@ -7,7 +7,7 @@
  * Author:      Cyrale
  * Author URI:  https://github.com/cyrale
  * Donate link: https://github.com/cyrale/partners-banner
- * License:     GPL2
+ * License:     GPL2+
  * Text Domain: partners-banner
  * Domain Path: /languages
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * Copyright (c) 2018 Cyril Jacquesson (email : cyril@jacquesson.me)
+ * Copyright (c) 2018 Cyrale (email : cyril@jacquesson.me)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at
