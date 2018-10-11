@@ -22,11 +22,15 @@ class PB_Front {
 	protected $plugin = null;
 
 	/**
+	 * Twig loader.
+	 *
 	 * @var Twig_Loader_Filesystem
 	 */
 	protected $loader;
 
 	/**
+	 * Twig.
+	 *
 	 * @var Twig_Environment
 	 */
 	protected $twig;
@@ -38,7 +42,7 @@ class PB_Front {
 	 *
 	 * @param  Partners_Banner $plugin Main plugin object.
 	 *
-	 * @throws Twig_Error_Loader
+	 * @throws Twig_Error_Loader Twig error.
 	 */
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
@@ -71,10 +75,16 @@ class PB_Front {
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts_and_styles' ] );
 	}
 
+	/**
+	 * Declare shortcode.
+	 */
 	public function shortcode() {
 		add_shortcode( 'partners', [ $this, 'display' ] );
 	}
 
+	/**
+	 * Enqueue scripts and styles.
+	 */
 	public function enqueue_scripts_and_styles() {
 		if ( is_admin() ) {
 			return;
@@ -118,21 +128,34 @@ class PB_Front {
 		);
 	}
 
+	/**
+	 * Render the banner of partners.
+	 *
+	 * @param array $attr Attributes.
+	 *
+	 * @return string
+	 * @throws Twig_Error_Loader Twig error.
+	 * @throws Twig_Error_Runtime Twig error.
+	 * @throws Twig_Error_Syntax Twig error.
+	 */
 	public function render( $attr = [] ) {
-		$attr = shortcode_atts( [
-			'layout'  => $this->plugin->settings->get_value( 'layout', 'simple-list' ),
-			'options' => [
-				'simple_list_limit'              => intval( $this->plugin->settings->get_value( 'simple_list_limit', '' ) ),
-				'carousel_slides_to_show'        => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show',5 ) ),
-				'carousel_slides_to_show_tablet' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_tablet', 3 ) ),
-				'carousel_slides_to_show_mobile' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_mobile', 2 ) ),
-				'carousel_speed'                 => intval( $this->plugin->settings->get_value( 'carousel_speed', 300 ) ),
-				'carousel_autoplay_speed'        => intval( $this->plugin->settings->get_value( 'carousel_autoplay_speed', 3000 ) ),
-				'random_layout'                  => $this->plugin->settings->get_value( 'random_layout', '4,3' ),
-				'random_speed'                   => intval( $this->plugin->settings->get_value( 'random_speed', 300 ) ),
-				'random_autoplay_speed'          => intval( $this->plugin->settings->get_value( 'random_autoplay_speed', 3000 ) ),
+		$attr = shortcode_atts(
+			[
+				'layout'  => $this->plugin->settings->get_value( 'layout', 'simple-list' ),
+				'options' => [
+					'simple_list_limit'              => intval( $this->plugin->settings->get_value( 'simple_list_limit', '' ) ),
+					'carousel_slides_to_show'        => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show', 5 ) ),
+					'carousel_slides_to_show_tablet' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_tablet', 3 ) ),
+					'carousel_slides_to_show_mobile' => intval( $this->plugin->settings->get_value( 'carousel_slides_to_show_mobile', 2 ) ),
+					'carousel_speed'                 => intval( $this->plugin->settings->get_value( 'carousel_speed', 300 ) ),
+					'carousel_autoplay_speed'        => intval( $this->plugin->settings->get_value( 'carousel_autoplay_speed', 3000 ) ),
+					'random_layout'                  => $this->plugin->settings->get_value( 'random_layout', '4,3' ),
+					'random_speed'                   => intval( $this->plugin->settings->get_value( 'random_speed', 300 ) ),
+					'random_autoplay_speed'          => intval( $this->plugin->settings->get_value( 'random_autoplay_speed', 3000 ) ),
+				],
 			],
-		], $attr );
+			$attr
+		);
 
 		if ( ! empty( $attr['options']['random_layout'] ) ) {
 			$attr['options']['random_layout'] = array_map(
@@ -146,11 +169,11 @@ class PB_Front {
 			'posts_per_page' => - 1,
 		];
 
-		if ($attr['layout'] === 'simple-list') {
+		if ( 'simple-list' === $attr['layout'] ) {
 			$limit = $attr['options']['simple_list_limit'];
 
 			if ( ! empty( $limit ) ) {
-				$args[ 'posts_per_page' ] = $limit;
+				$args['posts_per_page'] = $limit;
 			}
 		}
 
@@ -169,20 +192,31 @@ class PB_Front {
 				$partner->thumbnail = [
 					'src'    => ( ! empty( $src ) && is_array( $src ) ) ? $src[0] : false,
 					'src@2x' => ( ! empty( $src_retina ) && is_array( $src_retina ) ) ? $src_retina[0] : false,
-					'alt'    => trim( strip_tags( get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) ) ),
+					'alt'    => trim( wp_strip_all_tags( get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) ) ),
 				];
 			}
 		}
 
 		$template = $this->twig->load( "{$attr['layout']}.twig" );
 
-		return $template->render( [
-			'partners' => $partners,
-			'layout'   => $attr['layout'],
-			'options'  => $attr['options'],
-		] );
+		return $template->render(
+			[
+				'partners' => $partners,
+				'layout'   => $attr['layout'],
+				'options'  => $attr['options'],
+			]
+		);
 	}
 
+	/**
+	 * Display the rendered HTML.
+	 *
+	 * @param array $attr Attributes.
+	 *
+	 * @throws Twig_Error_Loader Twig error.
+	 * @throws Twig_Error_Runtime Twig error.
+	 * @throws Twig_Error_Syntax Twig error.
+	 */
 	public function display( $attr = [] ) {
 		echo $this->render( $attr );
 	}

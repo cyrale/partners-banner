@@ -58,7 +58,7 @@ class PB_Partner extends CPT_Core {
 					'title',
 					'thumbnail',
 				],
-				'menu_icon'        => 'dashicons-businessman', // https://developer.wordpress.org/resource/dashicons/
+				'menu_icon'        => 'dashicons-businessman',
 				'public'           => false,
 				'show_in_menu'     => true,
 				'show_in_nav_menu' => false,
@@ -114,19 +114,26 @@ class PB_Partner extends CPT_Core {
 	}
 
 	public function add_partner_metabox() {
-		$cmb = new_cmb2_box( [
-			'id'           => 'partner-options',
-			'title'        => __( 'Options', 'partners-banner' ),
-			'object_types' => [ $this->post_type ],
-		] );
+		$cmb = new_cmb2_box(
+			[
+				'id'           => 'partner-options',
+				'title'        => __( 'Options', 'partners-banner' ),
+				'object_types' => [ $this->post_type ],
+			]
+		);
 
-		$cmb->add_field( [
-			'name'             => __( 'Website', 'partners-banner' ),
-			'id'               => 'partner_website',
-			'type'             => 'text_url',
-		]  );
+		$cmb->add_field(
+			[
+				'name' => __( 'Website', 'partners-banner' ),
+				'id'   => 'partner_website',
+				'type' => 'text_url',
+			]
+		);
 	}
 
+	/**
+	 * Define new image size for the thumbnail of partner.
+	 */
 	public function image_size() {
 		$width  = intval( $this->plugin->settings->get_value( 'width', 180 ) );
 		$height = intval( $this->plugin->settings->get_value( 'height', 100 ) );
@@ -145,9 +152,9 @@ class PB_Partner extends CPT_Core {
 	 * @return array
 	 */
 	private function insert_after( $columns, $new_columns, $column_name ) {
-		$index = array_search( $column_name, array_keys( $columns ) );
+		$index = array_search( $column_name, array_keys( $columns ), true );
 
-		if ( $index === false ) {
+		if ( false === $index ) {
 			return array_merge( $columns, $new_columns );
 		}
 

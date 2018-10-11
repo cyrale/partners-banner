@@ -407,6 +407,17 @@ final class Partners_Banner {
 		return $url . $path;
 	}
 
+	/**
+	 * Render banner of partners.
+	 *
+	 * @param array $atts Attributes.
+	 * @param bool  $echo echo HTML if true, return it otherwise.
+	 *
+	 * @return string The rendered HTML.
+	 * @throws Twig_Error_Loader Twig error.
+	 * @throws Twig_Error_Runtime Twig error.
+	 * @throws Twig_Error_Syntax Twig error.
+	 */
 	public function render( $atts = [], $echo = true ) {
 		$render = $this->front->render( $atts, $echo );
 
