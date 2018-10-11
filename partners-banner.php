@@ -435,3 +435,10 @@ add_action( 'plugins_loaded', [ partners_banner(), 'hooks' ] );
 // Activation and deactivation.
 register_activation_hook( __FILE__, [ partners_banner(), '_activate' ] );
 register_deactivation_hook( __FILE__, [ partners_banner(), '_deactivate' ] );
+
+// Update checker.
+Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/cyrale/partners-banner',
+	__FILE__,
+	'partners-banner'
+);

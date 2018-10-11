@@ -2,15 +2,32 @@
     "name": "cyrale/partners-banner",
     "version": "1.0.1",
     "description": "Display a banner of your partners.",
-    "type": "wordpress-plugin",
-    "license": "GPL2",
+    "keywords": [
+        "wordpress",
+        "wordpress-plugin",
+        "partner",
+        "banner"
+    ],
+    "homepage": "https://github.com/cyrale/partners-banner",
+    "license": "GPL+2.0",
     "authors": [
         {
             "name": "Cyrale",
             "email": "cyril@jacquesson.me"
         }
     ],
+    "support"    : {
+        "issues": "https://github.com/cyrale/partners-banner/issues",
+        "source": "https://github.com/cyrale/partners-banner"
+    },
+    "type": "wordpress-plugin",
     "require": {
-        "twig/twig": "^2.5"
+        "twig/twig": "^2.5",
+        "yahnis-elsts/plugin-update-checker": "^4.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.3",
+        "wp-coding-standards/wpcs": "^1.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4"
     }
 }
